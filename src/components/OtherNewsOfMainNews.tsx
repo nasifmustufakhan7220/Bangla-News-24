@@ -1,5 +1,6 @@
 import { IOtherNews } from "@/types/type";
 import NewsCardOfOtherNews from "./NewsCardOfOtherNews";
+import Link from "next/link";
 
 
 const OtherNewsOfMainNews = ({news}:{news:IOtherNews[]}) => {
@@ -16,7 +17,7 @@ const OtherNewsOfMainNews = ({news}:{news:IOtherNews[]}) => {
             <div className="text-xl font-semibold mt-5" key={slectedN.curationId}>
               {slectedN.title}
               <div className="divider"></div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">{slectedN.articles.map(ar=><NewsCardOfOtherNews key={ar.id} newsCard={ar}/>)}</div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">{slectedN.articles.map(ar=><Link href={`/article/${ar.id}`} key={ar.id}><NewsCardOfOtherNews  newsCard={ar}/></Link>)}</div>
             </div>
           ))}
       </div>

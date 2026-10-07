@@ -1,5 +1,6 @@
 import { INewsDetails } from "@/types/type";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import React from "react";
 
 const NewsDetails = async ({
@@ -15,11 +16,15 @@ const NewsDetails = async ({
   console.log("main data", data);
   const detailsPage:INewsDetails = data.data;
 
+  if(!detailsPage){
+    notFound()
+  }
+
   console.log("data.data", detailsPage);
   return (
     <div className="flex flex-col justify-center mt-8">
       <h2 className="mx-auto max-w-3xl text-3xl font-bold leading-snug text-neutral-900 sm:text-3xl">
-        {detailsPage.title}
+        {detailsPage.title ? <>{detailsPage.title}</> :<></>}
       </h2>
       <p className="mx-auto max-w-3xl mt-3 text-lg text-neutral-600">
         {detailsPage.description.blocks[0].model.blocks[0].model.text}
