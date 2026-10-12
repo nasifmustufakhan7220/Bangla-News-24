@@ -1,0 +1,17 @@
+import { ICategory } from '@/types/bangalNews.types';
+import React from 'react';
+
+const Navbar = async() => {
+    const res = await fetch("https://news-api-v2.vercel.app/api/categories", {cache:"force-cache"});
+    const data = await res.json();
+    const categories:ICategory[] = data.data;
+    return (
+        <div className='flex items-center gap-3 w-full mx-auto max-w-100'>
+            {
+                categories.filter(category=>category.topicId).map(c=><li className='list-none cursor-pointer hover:text-red-500' key={c.topicId}>{c.title}</li>)
+            }
+        </div>
+    );
+};
+
+export default Navbar;
