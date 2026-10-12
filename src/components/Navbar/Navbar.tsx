@@ -1,4 +1,5 @@
 import { ICategory } from '@/types/bangalNews.types';
+import Link from 'next/link';
 import React from 'react';
 
 const Navbar = async() => {
@@ -7,6 +8,7 @@ const Navbar = async() => {
     const categories:ICategory[] = data.data;
     return (
         <div className='flex items-center gap-3 w-full mx-auto max-w-100'>
+            <Link className='list-none cursor-pointer hover:text-red-500' href={'/'}>হোম</Link>
             {
                 categories.filter(category=>category.topicId).map(c=><li className='list-none cursor-pointer hover:text-red-500' key={c.topicId}>{c.title}</li>)
             }
