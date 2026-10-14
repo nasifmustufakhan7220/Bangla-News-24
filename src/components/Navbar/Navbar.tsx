@@ -6,7 +6,6 @@ const Navbar = async() => {
     const res = await fetch("https://news-api-v2.vercel.app/api/categories", {cache:"force-cache"});
     const data = await res.json();
     const categories:ICategory[] = data.data;
-    console.log(categories);
     return (
         <div className='flex items-center gap-3 w-full mx-auto max-w-100'>
             <Link className='list-none cursor-pointer hover:text-red-500' href={'/'}>হোম</Link>

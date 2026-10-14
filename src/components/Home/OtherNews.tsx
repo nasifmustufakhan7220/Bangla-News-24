@@ -14,7 +14,7 @@ const OtherNews = ({ card }: { card: INews }) => {
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {card.articles.map((c) => (
           <Link
-            href={``}
+            href={`/article/${c.id}`}
             key={c.id}
             className="group min-w-0 overflow-hidden rounded-md border border-neutral-200 bg-white transition-shadow hover:shadow-md"
           >

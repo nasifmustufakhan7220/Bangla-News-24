@@ -37,7 +37,9 @@ const CategoryProducts = async ({
             key={c.id}
             className="group min-w-0 overflow-hidden rounded-md border border-neutral-200 bg-white transition-shadow hover:shadow-md cursor-pointer"
           >
+            <Link href={`/article/${c.id}`}>
             <NewsCard card={c} />
+            </Link>
           </div>
         ))}
       </div>

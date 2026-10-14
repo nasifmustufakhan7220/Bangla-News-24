@@ -1,11 +1,13 @@
 import { IHeadLine } from "@/types/bangalNews.types";
 import Image from "next/image";
+import Link from "next/link";
 
 const MainNews = ({ news }: { news: IHeadLine[] }) => {
   return (
     <>
       {news.slice(0, 1).map((n) => (
-        <article
+        <Link href={`/article/${n.id}`} key={n.id}>
+          <article
           key={n.id}
           className="h-full overflow-hidden rounded-xl border border-[#e2e2e2] bg-white"
         >
@@ -36,6 +38,7 @@ const MainNews = ({ news }: { news: IHeadLine[] }) => {
             </p>
           </div>
         </article>
+        </Link>
       ))}
     </>
   );
