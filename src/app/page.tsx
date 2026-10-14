@@ -11,16 +11,16 @@ export default function Home() {
       <Header />
       <MarqueeText />
 
-      <Suspense fallback={<NewsSectionSkeleton/>}>
+      <Suspense fallback={<NewsSectionSkeleton />}>
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
             {/* Main News Section */}
-            <div className="min-w-0 lg:col-span-9">
+            <div className="min-w-0 lg:col-span-8">
               <HomeSection />
             </div>
 
-            {/* Right Sidebar */}
-            <aside className="lg:col-span-3">
+            {/* Right Sidebar - More Width */}
+            <aside className="min-w-0 lg:col-span-4">
               <MostRead />
             </aside>
           </div>
