@@ -3,11 +3,14 @@ import MainNews from "./MainNews";
 import { INews } from "@/types/bangalNews.types";
 import MainNewsLists from "./MainNewsLists";
 import OtherNews from "./OtherNews";
+import { notFound } from "next/navigation";
 
 const HomeSection = async () => {
   const res = await fetch("https://news-api-v2.vercel.app/api/news/sections", {
     next: { revalidate: 60 },
   });
+
+  if(!res.ok) notFound();
 
   const data = await res.json();
   const news: INews[] = data.data;

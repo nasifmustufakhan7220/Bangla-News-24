@@ -1,12 +1,14 @@
 import { IHeadLine } from "@/types/bangalNews.types";
 import NewsCard from "./NewsCard";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const getCetagory = async (categorySlug: string) => {
   const res = await fetch(
     `https://news-api-v2.vercel.app/api/category/${categorySlug}`,
     { next: { revalidate: 60 } },
   );
+  if(!res.ok) notFound();
   return await res.json();
 };
 const CategoryProducts = async ({
@@ -17,7 +19,6 @@ const CategoryProducts = async ({
   const { categorySlug } = await params;
   const categories = await getCetagory(categorySlug);
   const categoriesData: IHeadLine[] = categories.data;
-  console.log(categoriesData);
   return (
     <div className="mx-auto max-w-300">
       <h2 className="mb-2 border-b-2 border-red-700 pb-2 text-lg font-bold text-neutral-900">

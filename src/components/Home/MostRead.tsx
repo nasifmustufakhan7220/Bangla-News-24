@@ -1,11 +1,14 @@
 import { IHeadLine } from "@/types/bangalNews.types";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import React from "react";
 
 const MostRead = async () => {
   const res = await fetch("https://news-api-v2.vercel.app/api/news/most-read", {
     next: { revalidate: 60 },
   });
+
+  if(!res.ok) notFound();
   const data = await res.json();
   const news:IHeadLine[] = data.data;
 

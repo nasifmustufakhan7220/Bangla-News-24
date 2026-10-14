@@ -1,10 +1,12 @@
 import { INewsDetails } from "@/types/bangalNews.types";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 const getDetailsNews = async (articleId: string) => {
   const res = await fetch(
     `https://news-api-v2.vercel.app/api/article/${articleId}`,
   );
+  if(!res.ok) notFound()
   return await res.json();
 };
 
