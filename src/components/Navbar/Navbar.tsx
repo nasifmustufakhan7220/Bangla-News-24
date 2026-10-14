@@ -1,6 +1,6 @@
 import { ICategory } from '@/types/bangalNews.types';
 import Link from 'next/link';
-import React from 'react';
+
 
 const Navbar = async() => {
     const res = await fetch("https://news-api-v2.vercel.app/api/categories", {cache:"force-cache"});
