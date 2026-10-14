@@ -1,15 +1,12 @@
-import Header from "@/components/Header";
 import HomeSection from "@/components/Home/HomeDesign";
 import NewsSectionSkeleton from "@/components/Home/HomeSkeleton";
 import MostRead from "@/components/Home/MostRead";
-import MarqueeText from "@/components/MarqueeText";
 import { Suspense } from "react";
 
 export default function Home() {
   return (
     <div>
-      <Header />
-      <MarqueeText />
+     
 
       <Suspense fallback={<NewsSectionSkeleton />}>
         <div className="mx-auto max-w-7xl px-4">
