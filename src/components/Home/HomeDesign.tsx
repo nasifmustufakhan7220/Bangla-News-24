@@ -1,16 +1,13 @@
-
 import React from "react";
 import MainNews from "./MainNews";
 import { INews } from "@/types/bangalNews.types";
 import MainNewsLists from "./MainNewsLists";
+import OtherNews from "./OtherNews";
 
 const HomeSection = async () => {
-  const res = await fetch(
-    "https://news-api-v2.vercel.app/api/news/sections",
-    {
-      next: { revalidate: 60 },
-    }
-  );
+  const res = await fetch("https://news-api-v2.vercel.app/api/news/sections", {
+    next: { revalidate: 60 },
+  });
 
   const data = await res.json();
   const news: INews[] = data.data;
@@ -32,10 +29,13 @@ const HomeSection = async () => {
       </div>
 
       {/* Other news of home page */}
-      <div>{otherNews.length}</div>
+      <div className="mt-8 space-y-6">
+        {otherNews.filter(f=>f.curationType !== "tipo-curation").map((n) => (
+          <OtherNews key={n.title} card={n} />
+        ))}
+      </div>
     </div>
   );
 };
 
 export default HomeSection;
-
