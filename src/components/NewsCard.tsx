@@ -8,7 +8,7 @@ const NewsCard = ({ card }:{card:IHeadLine}) => {
       <div className="relative aspect-video w-full overflow-hidden bg-neutral-100">
         <Image
           src={card.imageUrl}
-          alt={card.imageAlt}
+          alt=""
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-300 group-hover:scale-105"
